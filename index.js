@@ -2,6 +2,7 @@ var http = require('http')
 var express = require('express')
 var logger = require('morgan')
 var path = require('path')
+var cors = require('cors')
 
 var app = express()
 
@@ -43,6 +44,11 @@ const test_contents = [
       }
     }
   ]
+const corsOption = {
+    origin: 'http://127.0.0.1:3000',
+    credentials: true
+}
+app.use(cors(corsOption))
 
 app.get("/", function(req, res) {
     res.status(200).send("Server Working!")
