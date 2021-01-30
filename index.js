@@ -42,10 +42,19 @@ const test_contents = [
         'contents': "이건 서브컨텐츠로..",
         'date': '1970-01-01 12:00:00'
       }
+    },
+    {
+      'id': '추가',
+      'type': 'post',
+      'data': {
+        'title' : '배아파',
+        'contents' : '진짜 개아파..',
+        'data' : Date.now
+      }
     }
   ]
 const corsOption = {
-    origin: 'http://127.0.0.1:3000',
+    origin: 'http://localhost:3000',
     credentials: true
 }
 app.use(cors(corsOption))
@@ -55,6 +64,7 @@ app.get("/", function(req, res) {
 })
 
 app.get("/api/contents", (req, res) => {
+    console.log(req.headers)
     console.log("called")
     res.status(200).send(test_contents)
 })
